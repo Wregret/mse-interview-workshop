@@ -17,10 +17,23 @@ public class JumpGame {
     }
 
     public static boolean canJump(int[] array) {
+        // Our destination is the end of the array
         int destination = array.length - 1;
+        /*
+         * Greedy
+         * Traverse from tail to head. If the furthest distance
+         * we can reach from the current index covers the
+         * destination, then the destination can be replaced with
+         * the current index because we know that if we can reach
+         * the current index, we definitely can jump to the destination
+         */
         for (int i = array.length - 1; i >= 0; i --) {
             if (i + array[i] >= destination) destination = i;
         }
+        /*
+         * Check if the destination is 0 for that we can reach the
+         * end from 0
+         */
         return destination == 0;
     }
 }
